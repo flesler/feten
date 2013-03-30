@@ -1,0 +1,59 @@
+include includes/mixins
+
+!!!
+html(lang='es', xmlns='http://www.w3.org/1999/xhtml')
+  head
+    title Feten - #{title}
+
+    block metas
+      meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+      mixin meta('keywords', 'feten,vinilo')
+      mixin meta('description', 'Descripcion de Feten')
+      mixin meta('robots', 'index, follow')
+      mixin meta('copyright', '2012 Feten')
+      mixin meta('author', 'Ariel Flesler')
+      mixin meta('language', 'es-ar')
+
+    block styles
+      link(type='text/css', rel='stylesheet', href='/css/style.css')
+      link(type='image/x-icon', rel='shortcut icon', href='/favicon.png')
+
+  body
+    #all
+    
+      block header
+        #header
+          //- Logo
+          a#logo(href='/')
+            mixin image('ui/logo_feten', 'Feten')
+          
+          mixin image('ui/slogan', 'Mantener el orden tambien puede ser cool', {id:'slogan'})
+
+          div#nav
+            a.catalogo(href='/catalogo/', 'Catalogo')
+
+            a.nosotros(href='/nosotros/', 'Nosotros')
+
+            a.contacto(href='/contacto/', 'Contacto')
+      
+      #content
+        //- != messages()
+        block content
+      
+      block footer
+        #footer
+
+          div.follow
+            p seguinos en...
+            a.facebook(href='https://www.facebook.com/fetenvinilos', target='_blank')
+            a.twitter(href='https://twitter.com/FetenVinilos', target='_blank')
+
+          div.separator
+
+          div.contact
+            a.email(href='mailto:info@feten.com.ar') info@feten.com.ar
+            p.tel (+11) 6510-4384
+      
+      block scripts
+        mixin script('http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min', true)
+        mixin script('feten')

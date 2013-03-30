@@ -1,0 +1,502 @@
+// Reset
+img
+  border 0
+
+html, body,
+ul, li, ol,
+input, img,
+h1, h2, h3,
+p
+  margin 0
+  padding 0
+  list-style none
+
+body
+  font-family Helvetica,Arial,Tahoma
+  font-size 13px
+  background-color #9D9FA2
+  color #555
+
+a
+  color #555
+  text-decoration none
+
+// Cross-browser polyfill
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+
+border-radius()
+  vendor('border-radius', arguments)
+
+box-shadow()
+  vendor('box-shadow', arguments)
+
+transform()
+  vendor('transform', arguments)
+
+transition()
+  vendor('transition', arguments)
+
+border-box()
+  -moz-box-sizing border-box
+  box-sizing border-box
+
+// Definitions
+
+$main_color=#D9E021
+$header_color=#4D4D4D
+
+// Utils
+
+flip()
+  transform scaleX(-1)
+  filter FlipH
+  -ms-filter "FlipH"
+
+menu-icon()
+  padding-left 20px
+  background url(/images/ui/menu_catalogo.png) no-repeat
+  line-height: 12px;
+
+trapezium(color, square_height, top_height, top_height2=top_height/2, left=0, bottom=0)
+  width 0
+  height square_height
+  border-right top_height solid color
+  border-top top_height2 solid transparent
+  position absolute
+  bottom bottom
+  left left
+
+trapezium-shadow()
+  -webkit-filter drop-shadow(0px 0px 11px rgba(0,0,0,0.4))
+  filter url(shadow.svg#drop-shadow)
+  -ms-filter "progid:DXImageTransform.Microsoft.Dropshadow(OffX=10, OffY=10, Color='#444')"
+  filter "progid:DXImageTransform.Microsoft.Dropshadow(OffX=10, OffY=10, Color='#444')"
+
+// Layout
+
+#all
+  margin 0 auto
+  background-color #FFF
+  width 1024px
+
+// General
+
+.info
+  text-align right
+  z-index 2
+
+  .short
+    font-size 15px
+    height 20px
+
+  .name
+    text-transform uppercase
+    color $main_color
+    font-size 14px
+
+// Header
+
+#header
+  height 85px
+  position relative
+  background $header_color
+  padding-top 28px
+  clear both
+  border-bottom 5px solid $main_color
+
+#logo
+  border 0
+  float left
+  margin-left 100px
+
+#slogan
+  float left
+  margin-left 15px
+  margin-top 18px
+
+#nav
+  float right
+  overflow hidden
+  margin-right 103px
+  margin-top 17px
+
+  a
+    float left
+    width 148px
+    height 98px
+    background url(/images/ui/menu.png)
+    position relative
+
+    &.catalogo
+      background-position 0px 0px
+      z-index 3
+
+      &:hover, &.selected
+        background-position 0px -98px
+
+    &.nosotros
+      background-position 0px -192px
+      z-index 2
+      margin-left -45px
+
+      &:hover, &.selected
+        background-position 0px -291px
+
+    &.contacto
+      background-position 0px -396px
+      z-index 1
+      margin-left -47px
+
+      &:hover, &.selected
+        background-position 0px -495px
+
+// Footer
+
+#footer
+  width 100%
+  position relative
+  background $main_color
+  height 113px
+  border-top 5px solid $header_color
+
+  a, .contact .tel, .contact .email
+    background url(/images/ui/footer_icons.png) no-repeat
+
+  .follow
+    width 100px
+    margin-top 28px
+    float left
+    overflow hidden
+    margin-left 642px
+
+    p
+      font-size 16px
+      margin-bottom 5px
+
+    a
+      width 29px
+      height 25px
+      display block
+      float left
+
+      &.facebook
+        margin-right 3px
+        background-position 0px -46px
+
+      &.twitter
+        background-position 0px -71px
+
+  .separator
+    width 1px
+    margin 15px 15px
+    height 84px
+    border-right 1px solid #999
+    float left
+
+  .contact
+    margin-top 28px
+    float left
+
+    .tel, .email
+      padding-left 37px
+      line-height 21px
+      display block
+
+    .tel
+      margin-top 8px
+      background-position 0px -24px
+
+// Content
+
+#content
+  min-height 300px
+
+// Utils
+
+
+// Home
+
+#home
+  height auto
+
+// About
+
+#about
+  overflow hidden
+  width 100%
+  padding 25px 0
+
+  .photo
+    position relative
+    width 175px
+    height 237px
+    float left
+
+    &.pablo
+      margin-left 80px
+
+    &.nadia
+      margin-left 41px
+
+    .who
+      text-align right
+      position absolute
+      bottom 0
+      height 27px
+      width 96%
+      font-size 12px
+
+    .shape
+      trapezium(white, 30px, 175px, 35px, 0px, 4px)
+      trapezium-shadow()
+
+  .text
+    float left
+    margin-left 94px
+    padding 30px
+    width 285px
+    background $main_color
+    box-shadow 0px 0px 6px 3px #CCC
+    text-align justify
+
+    li
+      list-style decimal
+      margin-left 19px
+
+    p, h2
+      margin 10px 0
+      font-size 13px
+
+      &.smaller
+        font-size 11px
+
+// Contact
+
+#contact
+  width 571px
+  margin 0px auto
+  padding 40px 0
+
+  form
+    overflow hidden
+
+  label
+    float left
+    clear left
+    width 95px
+    height 25pt
+    font-size 16px
+    menu-icon()
+
+  input, textarea
+    float left
+    width 406px
+    //height 21px
+    border 1px solid $header_color
+    color $header_color
+    text-indent 2px
+
+  input#submit
+    width 112px
+    clear left
+    border none
+    float right
+    margin 9px 40px 0 0
+
+  .error
+    color red
+
+// Catalog
+
+#catalog
+  overflow hidden
+  width 100%
+  padding 25px 0
+
+  .categories
+    float left
+    margin 65px 20px 0 100px
+
+    li
+      menu-icon()
+      height 29px
+      text-transform uppercase
+      font-size 14px
+
+      a:hover
+        color $main_color
+
+  .featured
+    overflow hidden
+    float right
+    margin 65px 100px 0 20px
+
+    li
+      float left
+
+    .left, .right
+      width 13px
+      height 26px
+      background url(/images/ui/flecha.png)
+      margin 150px 10px 0 10px
+      cursor pointer
+
+    .right
+      flip()
+
+    .images
+      width 423px
+      height 318px
+      border 8px solid $main_color
+      overflow hidden
+
+      ul
+        width 10000px
+
+      li
+        float left
+        position relative
+
+        .info
+          trapezium(white, 30px, 423px, 75px, 0px, 3px)
+          trapezium-shadow()
+
+          .short
+            margin-top -15px
+            width 415px
+
+          .name
+            width 415px
+
+
+// Catalog Category
+
+#catalog-category
+
+  h1
+    menu-icon()
+    text-transform uppercase
+    font-size 16px
+    font-weight normal
+    margin-bottom 10px
+    margin-left 140px
+
+// (Shared with Home) 
+#home, #catalog-category  
+  padding 40px 20px
+
+  .products
+    width 730px
+    overflow hidden
+    margin 0 auto
+
+    li
+      float left
+      margin 10px 5px
+
+      a 
+        position relative
+        overflow hidden
+        width 211px
+        height 159px
+        display block
+        border 5px solid $main_color
+        border-box()
+
+        img
+          width 201px
+
+        .info
+          trapezium($main_color, 15px, 201px, 30px, 0, 0)
+          transition height 0.3s ease-out, border-right-color 0.5s
+          
+          .short
+            margin-top 25px
+            width 193px
+
+          .name
+            width 193px
+
+        &:hover .info
+          height 70px
+          border-right-color white
+          trapezium-shadow()
+
+// Product
+
+#product
+  padding 40px 0px
+  overflow hidden
+  width 100%
+
+  .nav
+    margin-bottom: 15px;
+    margin-top: -10px;
+
+    a
+      text-transform uppercase
+      menu-icon()
+
+      &:hover
+        color $main_color
+
+  .photos
+    float left
+    margin-left 110px
+    margin-right 70px
+
+    img
+      border 8px solid $main_color
+      border-box()
+
+    .thumbs
+      overflow hidden
+      max-width 439px
+
+      li
+        float left
+        width 80px
+        height 80px
+        cursor pointer
+        border 5px solid $main_color
+        margin 5px 5px
+        background-repeat no-repeat
+
+  .details
+    position relative
+    float left
+    width 240px
+    height 380px
+    background $main_color
+    border-radius 5px
+    box-shadow 0px 0px 3px 3px #CCC
+    padding 25px
+    margin-top: 22px;
+
+    .description
+      font-size 14px
+
+      p
+        margin 10px 0
+        text-align justify
+
+    .info
+      trapezium(white, 90px, 285px, 55px, 2px, 5px)
+      trapezium-shadow()
+
+      .short
+        margin-top 35px
+        width 270px
+
+      .name
+        width 270px
+
+#thanks
+  padding 140px 20px 0 20px
+  text-align center
+  font-size 15px

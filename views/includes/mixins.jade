@@ -1,0 +1,20 @@
+mixin image(src, alt, other)
+  if (typeof other === 'undefined')
+    other = {};
+  else if (typeof other === 'string')
+    other = {ext:other};
+  ext = other.ext || 'png';
+  img(id=other.id, class=other.class, title=alt, alt=alt, width=other.width, height=other.height, src='/images/'+src+'.'+ext)
+
+mixin script(src, abs)
+  if (!abs)
+    src = '/js/'+src;
+  script(src=src+'.js', type='text/javascript')
+
+mixin meta(name, content)
+  meta(name=name, content=content)
+
+mixin json(data, id)
+  ul(id=id)
+    each val, key in data
+      li= key + ': ' + JSON.stringify(val)

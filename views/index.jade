@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  #home
+
+    ul.products
+      each prod in featured
+        li: a(href=prod.url)
+          mixin image(prod.photos[0].url, prod.name, 'jpg')
+          .info
+            p.short #{prod.short}
+            p.name #{prod.name}

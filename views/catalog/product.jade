@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  #product
+
+    .photos
+
+      .nav 
+        a(href='../') #{product.category.name}
+        span  > #{product.name}
+        
+      mixin image(product.photos[0].url, product.name, 'jpg')
+
+      ul.thumbs
+        each photo in product.photos
+          pos = -photo.pos[0] + 'px -' + photo.pos[1] + 'px'
+          li(style='background-image:url(/images/'+photo.url+'.jpg);background-position:'+pos)
+
+    .details
+
+      .description 
+        p #{product.description}
+        p Medida: #{product.size}
+        p Colores: #{product.colors.join(' - ')}
+        if product.amount
+          p Cantidad: #{product.amount} Vinilos
+
+      .info
+        p.short #{product.short}
+        p.name #{product.name}

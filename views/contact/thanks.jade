@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  #thanks 
+
+    if success
+      p Gracias #{name} por contactarnos!
+    else
+      p Ha ocurrido un error, por favor contactanos a 
+        a(href='mailto:info@feten.com.ar') info@feten.com.ar

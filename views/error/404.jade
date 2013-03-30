@@ -1,0 +1,7 @@
+extends ../layout
+
+block append metas
+  mixin meta('robots', 'noindex,nofollow')
+
+block content
+  p#error Lo sentimos, no se ha encontrado la ruta: #{url}

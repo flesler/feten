@@ -1,0 +1,9 @@
+extends ../layout
+
+block append metas
+  mixin meta('robots', 'noindex,nofollow')
+
+block content
+  #error
+    p= error
+    p!= stack

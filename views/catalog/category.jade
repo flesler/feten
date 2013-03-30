@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  #catalog-category
+
+    h1 #{category.name}
+
+    ul.products
+      each prod in category.products
+        li: a(href=prod.url)
+          mixin image(prod.photos[0].url, prod.name, 'jpg')
+          .info
+            p.short #{prod.short}
+            p.name #{prod.name}

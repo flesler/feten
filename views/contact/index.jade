@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+
+  #contact
+      form(action='/contacto/', method='post')
+        
+        label(for='name') NOMBRE*
+        input(type='text', name='name')
+
+        label(for='email') E-MAIL*
+        input(type='text', name='email')
+
+        label(for='tel') TELEFONO
+        input(type='text', name='tel')
+
+        label(for='subject') ASUNTO*
+        input(type='text', name='subject')
+
+        label(for='message') MENSAJE*
+        textarea(type='text', name='message', rows=6)
+
+        input#submit(type='image', src='/images/ui/enviar.png')
+
+block append scripts
+  mixin script('validation')

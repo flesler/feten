@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  #catalog
+
+    ul.categories
+      each cat in categories
+        li: a(href=cat.url) #{cat.name}
+
+    ul.featured
+      li.left
+      li.images
+        ul
+          each prod in featured
+            li: a(href=prod.url)
+              url = prod.photos[0].url
+              mixin image(url, prod.name, 'jpg')
+              .info
+                p.short #{prod.short}
+                p.name #{prod.name}
+
+      li.right

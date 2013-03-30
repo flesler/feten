@@ -1,0 +1,5 @@
+- Google Analytics
+- Drop shadow in IE (8 at least doesn't work)
+- Weird grey line on FF over the trapeziums
+- No transition in IE8 (probably not supported at all)
+- Navigation bar on product page, overall, allow backwards navigation
